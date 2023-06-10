@@ -1,0 +1,50 @@
+.completed-tasks-container {
+  margin: 20px;
+}
+
+.task-card {
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.green {
+  background-image: linear-gradient(to right, #8ce3b2, #60d7a9);
+}
+
+.yellow {
+  background-image: linear-gradient(to right, #e3e28c, #d7d560);
+}
+
+
+.task-name {
+  font-weight: bold;
+}
+
+.task-date {
+  font-size: 0.8em;
+  color: #999;
+}
+
+.task-notes {
+  margin-bottom: 10px;
+  background-color: #f7f7f7;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.task-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.task-note-group {
+  margin-bottom: 10px;
+}
+
+.task-notes {
+  width: 100%;
+}

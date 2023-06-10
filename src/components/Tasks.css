@@ -1,0 +1,33 @@
+.sidebar {
+  background-color: #f8f9fa;
+  color: #343a40; /* Set the text color to dark */
+  font-family: 'Roboto', sans-serif; /* Apply Roboto font */
+}
+
+.nav-link {
+  color: #343a40; /* Set the link color to dark */
+}
+
+.nav-link:hover {
+  color: #212529; /* Set the link color on hover */
+}
+
+.nav-link.active {
+  font-weight: bold; /* Add font weight to the active link */
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+  width: 80%;
+}
+
+.divider:after {
+  content: "";
+  flex-grow: 1;
+  height: 2px;
+  background-color: black;
+  margin: 0 10px;
+}

@@ -1,0 +1,94 @@
+.task-card {
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  background-color: #fff;
+  transition: box-shadow 0.3s;
+}
+
+.task-card:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.completed-task {
+  text-decoration: line-through;
+  background-image: linear-gradient(to right, #8ce3b2, #60d7a9);
+}
+
+.task-checkbox input[type='checkbox'] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  outline: none;
+  transition: background-color 0.15s, border-color 0.15s;
+}
+
+.task-checkbox input[type='checkbox']:checked {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.task-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.task-name {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.task-details {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.task-date {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 5px;
+}
+
+.task-pomodoros {
+  font-size: 14px;
+  color: #888;
+  display: flex;
+  align-items: center;
+}
+
+.task-pomodoros span {
+  margin-right: 5px;
+}
+
+.task-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.task-actions button {
+  margin-left: 5px;
+  padding: 0;
+  font-size: 14px;
+  color: #888;
+}
+
+.task-actions button:hover {
+  color: #333;
+}
+
+.FormLabel {
+  margin-bottom: 5px;
+}
+
+.FormControl,
+.FormControlTextarea {
+  margin-bottom: 15px;
+}
