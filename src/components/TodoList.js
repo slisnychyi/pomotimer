@@ -6,6 +6,7 @@ import moment from 'moment'
 import axios from 'axios'
 import { format, addDays } from 'date-fns'
 import './TodoList.css'
+import { useSelector } from 'react-redux'
 
 const TodoList = ({dateRange}) => {
   const [tasks, setTasks] = useState([])
@@ -16,16 +17,17 @@ const TodoList = ({dateRange}) => {
   const [selectedTask, setSelectedTask] = useState(null)
   const [editTask, setEditTask] = useState(null)
   const [validationError, setValidationError] = useState('')
+  const userId = useSelector((state) => state.userId);
 
   useEffect(() => {
     const fetchTasks = async () => {
       try {
         if(dateRange === 'nextdays') {
-          const response = await axios.get(`http://localhost:8080/api/v1/tasks/nextdays`)
+          const response = await axios.get(`http://localhost:8080/api/v1/tasks/nextdays?userId=${userId}`)
           setTasks(response.data)
         } else {
           let date = format(getDate(dateRange),'yyyy-MM-dd' )
-          const response = await axios.get(`http://localhost:8080/api/v1/tasks/date?date=${date}`)
+          const response = await axios.get(`http://localhost:8080/api/v1/tasks/date?date=${date}&userId=${userId}`)
           setTasks(response.data)
         }
       }
@@ -34,7 +36,7 @@ const TodoList = ({dateRange}) => {
       }
     }
     fetchTasks()
-  }, [dateRange])
+  }, [userId, dateRange])
 
   const getDate = (dateRange) => {
     if (dateRange === 'today') {
@@ -55,7 +57,7 @@ const TodoList = ({dateRange}) => {
     }
 
     if (editTask) {
-      await axios.put(`http://localhost:8080/api/v1/tasks/${editTask.id}`,{
+      await axios.put(`http://localhost:8080/api/v1/tasks/${editTask.id}?userId=${userId}`,{
         ...editTask,
         name: newTask,
         date: moment(taskDate).format('YYYY-MM-DD'),
@@ -75,7 +77,7 @@ const TodoList = ({dateRange}) => {
       setTasks(updatedTasks)
       setEditTask(null)
     } else {
-      const response = await axios.post('http://localhost:8080/api/v1/tasks', {
+      const response = await axios.post(`http://localhost:8080/api/v1/tasks?userId=${userId}`, {
         id: Date.now(),
         name: newTask,
         date: moment(taskDate).format('YYYY-MM-DD'),
@@ -99,7 +101,7 @@ const TodoList = ({dateRange}) => {
   const handleTaskComplete = async (taskId) => {
     const editTask = tasks.find(e => e.id === taskId)
     if(editTask) {
-      await axios.put(`http://localhost:8080/api/v1/tasks/${editTask.id}`, {
+      await axios.put(`http://localhost:8080/api/v1/tasks/${editTask.id}?userId=${userId}`, {
         ...editTask,
         completed: !editTask.completed
       })
@@ -135,7 +137,7 @@ const TodoList = ({dateRange}) => {
   }
 
   const handleDeleteTask = async (taskId) => {
-    await axios.delete(`http://localhost:8080/api/v1/tasks/${taskId}`);
+    await axios.delete(`http://localhost:8080/api/v1/tasks/${taskId}?userId=${userId}`);
     const updatedTasks = tasks.filter((task) => task.id !== taskId)
     setTasks(updatedTasks)
     cleanNotes()
@@ -162,7 +164,7 @@ const TodoList = ({dateRange}) => {
 
   const handleUpdateTask = async () => {
     if (selectedTask) {
-      await axios.put(`http://localhost:8080/api/v1/tasks/${selectedTask.id}`,{
+      await axios.put(`http://localhost:8080/api/v1/tasks/${selectedTask.id}?userId=${userId}`,{
         ...selectedTask,
         taskNotes: taskNotes
       })
@@ -189,7 +191,7 @@ const TodoList = ({dateRange}) => {
   const handlePomodorosChange = async (taskId, increment) => {
     const editTask = tasks.find(e => e.id === taskId)
     if(editTask) {
-      await axios.put(`http://localhost:8080/api/v1/tasks/${editTask.id}`, {
+      await axios.put(`http://localhost:8080/api/v1/tasks/${editTask.id}?userId=${userId}`, {
         ...editTask,
         completedPomodoros: Math.max(0, editTask.completedPomodoros + (increment ? 1 : -1))
       })

@@ -6,7 +6,7 @@ import axios from 'axios';
 import './Statistics.css';
 
 const Statistics = () => {
-  const userId = useSelector((state) => state.user);
+  const userId = useSelector((state) => state.userId);
   const [statisticsData, setStatisticsData] = useState(null);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const Statistics = () => {
 
   const fetchStatisticsData = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/api/v1/statistics');
+      const response = await axios.get(`http://localhost:8080/api/v1/statistics?userId=${userId}`);
       setStatisticsData(response.data);
     } catch (error) {
       console.log('Error fetching statistics data:', error);

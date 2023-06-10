@@ -1,6 +1,6 @@
 import React from 'react';
 import { Carousel, Container, Image } from 'react-bootstrap'
-import './About.css'; // Import custom CSS file for styling
+import './About.css';
 
 const About = () => {
   return (
@@ -16,36 +16,31 @@ const About = () => {
         <Carousel>
           <Carousel.Item>
             <Image
-              src="https://nova-live.imgix.net//How%20Good%20Is%20Your%20Time%20Management-708fe8f4-8cf6-4246-b8dc-b04bd2624e92.jpg?"
+              src="https://prod-website-cdn.studysmarter.de/sites/2/uk/Pomodoro-Technique2.webp"
               alt="Carousel Image"
-              className="d-block w-100 carousel-item-image"
+              className="d-block w-100"
+              style={{ objectFit: "cover", height: "500px" }}
+            />
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src="https://uploads-ssl.webflow.com/5f822df699580bf215100720/61a995080421b156be4456ae_Cover%20(1)-p-1600.png"
+              alt="Second slide"
+              style={{ objectFit: "cover", height: "500px" }}
             />
             <Carousel.Caption>
               <h3>Manage your time</h3>
-              <p>You are anle to manage your daily tasks more efficient</p>
+              <p>You are able to manage your daily tasks more efficiently</p>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
             <img
               className="d-block w-100"
-              src="https://via.placeholder.com/800x400"
-              alt="Second slide"
-            />
-            <Carousel.Caption>
-              <h3>Second Slide</h3>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src="https://via.placeholder.com/800x400"
+              src="https://media.fourdayweek.io/files/the-pomodoro-method-how-to-boost-your-productivity-with-tomato-timers-KgTZg.jpeg"
               alt="Third slide"
+              style={{ objectFit: "cover", height: "500px" }}
             />
-            <Carousel.Caption>
-              <h3>Third Slide</h3>
-              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-            </Carousel.Caption>
           </Carousel.Item>
         </Carousel>
       </Container>

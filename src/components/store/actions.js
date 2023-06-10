@@ -7,7 +7,7 @@ export const loginUser = (email, password) => {
   return async (dispatch) => {
     try {
       const response = await axios.post('http://localhost:8080/api/v1/user/login', { email, password });
-      const userId = response.data.userId;
+      const userId = response.data;
 
       dispatch({
         type: LOGIN_USER,

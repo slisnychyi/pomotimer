@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { Container, Row, Col, Form, Button, Card, Alert } from 'react-bootstrap'
+import { Container, Row, Col, Form, Card } from 'react-bootstrap'
 import './CompletedTasks.css'
+import { useSelector } from 'react-redux'
 
 const CompletedTasks = () => {
   const [completedTasks, setCompletedTasks] = useState([])
+  const userId = useSelector((state) => state.userId);
 
   useEffect(() => {
     const fetchCompletedTasks = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/v1/tasks/completed')
+        const response = await axios.get(`http://localhost:8080/api/v1/tasks/completed?userId=${userId}`)
         setCompletedTasks(response.data)
       }
       catch (error) {
@@ -17,7 +19,7 @@ const CompletedTasks = () => {
       }
     }
     fetchCompletedTasks()
-  }, [])
+  }, [userId])
 
   // Group tasks by date
   const groupedTasks = completedTasks.reduce((groups, task) => {
