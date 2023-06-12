@@ -41,7 +41,7 @@ const CompletedTasks = () => {
               <h3 className="date-heading">{date}</h3>
 
               {tasks.map((task) => (
-                <Row>
+                <Row key={task.id}>
                   <Col md={6} key={task.id}>
                     <Card className={`task-card ${task.pomodoros >= task.completedPomodoros ? 'green' : 'yellow'}`}>
                       <Card.Body>

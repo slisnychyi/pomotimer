@@ -86,7 +86,7 @@ const TodoList = ({dateRange}) => {
         taskNotes: taskNotes,
         completed: false,
       });
-      if(taskDate === new Date()) {
+      if(new Date().toDateString() === taskDate.toDateString()) {
         setTasks([...tasks, response.data])
       }
     }
@@ -316,10 +316,9 @@ const TodoList = ({dateRange}) => {
         Task List
       </h3>
       {tasks.map((task) => (
-        <Row>
+        <Row key={task.id}>
           <Col md={11}>
-            <Card
-              key={task.id}
+            <Card key={task.id}
               className={`task-card ${task.completed ? 'completed-task' : ''} ${
                 selectedTask && selectedTask.id === task.id ? 'selected' : ''
               }`}
