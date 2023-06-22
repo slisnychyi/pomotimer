@@ -15,6 +15,7 @@ export const loginUser = (email, password) => {
       });
     } catch (error) {
       console.error(error);
+      throw error;
     }
   };
 };
